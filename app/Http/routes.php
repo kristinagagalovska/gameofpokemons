@@ -24,10 +24,10 @@ Route::get('/user/edit/{id}', 'UserController@edit')->name('user.edit');
 Route::post('/user/edit/{id}', 'UserController@update')->name('user.edit');
 
 //admin panel
-Route::get('/admin/{id}', 'AdminController@admin')->name('admin');
+Route::get('/admin', 'AdminController@admin')->name('admin');
 
 //admin can view all users
 Route::get('/admin/users/view', 'AdminController@view')->name('admin.users.view');
 
-//panel for managing the users
-//Route::get('/users/delete', 'AdminController@delete')->name('users.delete');
+//admin can delete users
+Route::get('/admin/users/delete/{id}', 'AdminController@delete')->name('admin.users.delete');
