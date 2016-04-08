@@ -31,3 +31,7 @@ Route::get('/admin/users/view', 'AdminController@view')->name('admin.users.view'
 
 //admin can delete users
 Route::get('/admin/users/delete/{id}', 'AdminController@delete')->name('admin.users.delete');
+
+//admi can mark users as admin
+Route::get('/admin/users/mark/{id}', 'AdminController@mark')->name('admin.users.mark');
+Route::post('/admin/users/mark/{id}', 'AdminController@save')->name('admin.users.mark');

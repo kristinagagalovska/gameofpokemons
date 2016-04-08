@@ -29,4 +29,18 @@ class AdminController extends Controller
 
         return redirect('admin');
     }
+
+    public function mark($id)
+    {
+        $user = User::find($id);
+        return view('admin.users.mark')->with('user', $user);
+    }
+    public function save(Request $request, $id)
+    {
+        $user = User::find($id);
+        $user->admin = 1;
+        $user->save();
+
+        return redirect('admin');
+    }
 }
