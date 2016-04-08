@@ -10,6 +10,11 @@
                 <div class="panel-body">
                     <a href="{{route('user.edit', Auth::user()->id)}}">Edit Profile</a>
                 </div>
+                <div class="panel-body">
+                    @if(Auth::user()->admin==1)
+                    <a href="{{route('admin', Auth::user()->id)}}">Admin</a>
+                        @endif
+                </div>
             </div>
         </div>
     </div>

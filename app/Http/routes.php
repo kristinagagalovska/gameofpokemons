@@ -22,3 +22,7 @@ Route::get('/public', 'HomeController@index');
 //page for the users to edit their information
 Route::get('/user/edit/{id}', 'UserController@edit')->name('user.edit');
 Route::post('/user/edit/{id}', 'UserController@update')->name('user.edit');
+
+//admin panel
+Route::get('/admin/{id}', 'AdminController@admin')->name('admin');
+
