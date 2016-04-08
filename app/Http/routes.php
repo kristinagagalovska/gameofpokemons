@@ -26,3 +26,8 @@ Route::post('/user/edit/{id}', 'UserController@update')->name('user.edit');
 //admin panel
 Route::get('/admin/{id}', 'AdminController@admin')->name('admin');
 
+//admin can view all users
+Route::get('/admin/users/view', 'AdminController@view')->name('admin.users.view');
+
+//panel for managing the users
+//Route::get('/users/delete', 'AdminController@delete')->name('users.delete');
