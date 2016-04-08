@@ -8,7 +8,7 @@
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">
-                    You are logged in!
+                    <a href="{{route('user.edit', Auth::user()->id)}}">Edit Profile</a>
                 </div>
             </div>
         </div>
