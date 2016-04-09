@@ -78,6 +78,25 @@ class AdminController extends Controller
         return view('admin.pokemons.show')->with('pokemons', $pokemons);
     }
 
+    public function edit($id)
+    {
+        $pokemon = Pokemon::find($id);
+
+        return view('admin.pokemons.edit')->with('pokemon', $pokemon);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $pokemon = Pokemon::find($id);
+        $pokemon->name=$request->get('name');
+        $pokemon->image=$request->get('image');
+        $pokemon->strength=$request->get('strength');
+
+        $pokemon->save();
+
+        return redirect()->route('admin.pokemons.show');
+    }
+
 
 
 

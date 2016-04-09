@@ -42,3 +42,7 @@ Route::post('/admin/pokemons/add', 'AdminController@store')->name('admin.pokemon
 
 //admin can view all pokemons
 Route::get('/admin/pokemons/show', 'AdminController@show')->name('admin.pokemons.show');
+
+//admin can edit pokemon
+Route::get('/admin/pokemons/edit/{id}', 'AdminController@edit')->name('admin.pokemons.edit');
+Route::post('/admin/pokemons/edit/{id}', 'AdminController@update')->name('admin.pokemons.edit');
