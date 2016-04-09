@@ -61,7 +61,7 @@ class AdminController extends Controller
         $pokemon->name = $request->get('name');
 
         $image = $request->file('image');
-        $image->move(public_path(). '/image/', $image->getClientOriginalName());
+        $image->move(public_path() . '/image/', $image->getClientOriginalName());
         $pokemon->image = $image->getClientOriginalName();
         $pokemon->strength = $request->get('strength');
         $pokemon->user_id = $request->get('user_id');
@@ -70,6 +70,16 @@ class AdminController extends Controller
 
         return redirect('admin');
     }
+
+    public function show()
+    {
+        $pokemons = Pokemon::all();
+
+        return view('admin.pokemons.show')->with('pokemons', $pokemons);
+    }
+
+
+
 
 
 }

@@ -39,3 +39,6 @@ Route::post('/admin/users/mark/{id}', 'AdminController@save')->name('admin.users
 //admin can create new pokemon
 Route::get('/admin/pokemons/add', 'AdminController@create')->name('admin.pokemons.add');
 Route::post('/admin/pokemons/add', 'AdminController@store')->name('admin.pokemons.add');
+
+//admin can view all pokemons
+Route::get('/admin/pokemons/show', 'AdminController@show')->name('admin.pokemons.show');
