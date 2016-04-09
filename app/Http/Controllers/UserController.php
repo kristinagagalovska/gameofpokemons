@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\User;
+use App\Pokemon;
 
 class UserController extends Controller
 {
@@ -26,6 +27,13 @@ class UserController extends Controller
         $user->save();
 
         return redirect('/public');
+    }
+
+    public function freePokemons(Request $request)
+    {
+        $pokemons = Pokemon::all()->where('user_id', NULL);
+
+        return view('user.pokemons')->with('pokemons', $pokemons);
     }
 
 

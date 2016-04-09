@@ -23,6 +23,13 @@ Route::get('/public', 'HomeController@index');
 Route::get('/user/edit/{id}', 'UserController@edit')->name('user.edit');
 Route::post('/user/edit/{id}', 'UserController@update')->name('user.edit');
 
+/*//user can choose pokemon
+Route::get('/user/pokemon/{id}', 'UserController@select')->name('user.pokemon');
+Route::post('/user/pokemon/{id}', 'UserController@save')->name('user.pokemon');*/
+
+//user can view all free pokemons
+Route::get('user/pokemons/{id}', 'UserController@freePokemons')->name('user.pokemons');
+
 //admin panel
 Route::get('/admin', 'AdminController@admin')->name('admin');
 
