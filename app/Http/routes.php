@@ -46,3 +46,6 @@ Route::get('/admin/pokemons/show', 'AdminController@show')->name('admin.pokemons
 //admin can edit pokemon
 Route::get('/admin/pokemons/edit/{id}', 'AdminController@edit')->name('admin.pokemons.edit');
 Route::post('/admin/pokemons/edit/{id}', 'AdminController@update')->name('admin.pokemons.edit');
+
+//admin can delete pokemon
+Route::get('/admin/pokemons/delete/{id}', 'AdminController@deletePokemon')->name('admin.pokemons.delete');

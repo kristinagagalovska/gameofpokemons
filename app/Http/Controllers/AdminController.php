@@ -97,8 +97,12 @@ class AdminController extends Controller
         return redirect()->route('admin.pokemons.show');
     }
 
+    public function deletePokemon(Request $request, $id)
+    {
+        $pokemon = Pokemon::find($id);
+        $pokemon->delete();
 
-
-
+        return redirect()->route('admin.pokemons.show');
+    }
 
 }
