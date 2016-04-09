@@ -6,6 +6,7 @@ use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\User;
 use App\Http\Controllers\Auth;
+use App\Pokemon;
 
 
 class AdminController extends Controller
@@ -43,4 +44,32 @@ class AdminController extends Controller
 
         return redirect('admin');
     }
+
+    public function create(Request $request)
+    {
+        return view('admin.pokemons.add');
+    }
+
+    public function store(Request $request)
+    {
+        $this->validate($request, [
+            'strength' => 'required|integer|between:0,100',
+            'image' => 'required',
+        ]);
+
+        $pokemon = new Pokemon();
+        $pokemon->name = $request->get('name');
+
+        $image = $request->file('image');
+        $image->move(public_path(). '/image/', $image->getClientOriginalName());
+        $pokemon->image = $image->getClientOriginalName();
+        $pokemon->strength = $request->get('strength');
+        $pokemon->user_id = $request->get('user_id');
+
+        $pokemon->save();
+
+        return redirect('admin');
+    }
+
+
 }

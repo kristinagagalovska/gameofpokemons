@@ -35,3 +35,7 @@ Route::get('/admin/users/delete/{id}', 'AdminController@delete')->name('admin.us
 //admi can mark users as admin
 Route::get('/admin/users/mark/{id}', 'AdminController@mark')->name('admin.users.mark');
 Route::post('/admin/users/mark/{id}', 'AdminController@save')->name('admin.users.mark');
+
+//admin can create new pokemon
+Route::get('/admin/pokemons/add', 'AdminController@create')->name('admin.pokemons.add');
+Route::post('/admin/pokemons/add', 'AdminController@store')->name('admin.pokemons.add');
