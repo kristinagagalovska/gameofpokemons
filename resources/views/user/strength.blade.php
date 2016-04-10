@@ -1,0 +1,1 @@
+<p>sum of the strengths of the pokemons is {{$sum}}</p>

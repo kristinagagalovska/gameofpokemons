@@ -37,6 +37,9 @@ Route::get('user/mypokemons/{id}', 'UserController@myPokemons')->name('user.mypo
 Route::get('/user/abandon/{id}', 'UserController@abandon')->name('user.abandon');
 Route::post('/user/abandon/{id}', 'UserController@saveAbandon')->name('user.abandon');
 
+//user can view total strength
+Route::get('/user/strength', 'UserController@strength')->name('user.strength');
+
 
 //admin panel
 Route::get('/admin', 'AdminController@admin')->name('admin');

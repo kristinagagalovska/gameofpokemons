@@ -71,6 +71,16 @@ class UserController extends Controller
         return redirect('/public');
     }
 
+    public function strength(Request $request)
+    {
+        $id = Auth::user()->id;
+
+        $strength = Pokemon::all()
+            ->where('user_id', $id)
+            ->sum('strength');
+        return view('user.strength')->with('sum', $strength);
+
+    }
 
 
 
