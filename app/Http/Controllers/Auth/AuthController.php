@@ -7,6 +7,7 @@ use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Support\Facades\Mail;
 
 class AuthController extends Controller
 {
@@ -65,7 +66,7 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'fullname' => $data['fullname'],
             'bday' => $data['bday'],
@@ -74,5 +75,19 @@ class AuthController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+
+         $usermail = $data['email'];
+         $data=[];
+
+         Mail::send('emails.welcome', $data, function($message) use ($usermail)
+         {
+             $message->to($usermail)
+                 ->subject('Welcome to Laravel');
+
+         });
+
+
+        return $user;
+
     }
 }
