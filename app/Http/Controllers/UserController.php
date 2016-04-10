@@ -6,6 +6,7 @@ use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\User;
 use App\Pokemon;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -35,6 +36,42 @@ class UserController extends Controller
 
         return view('user.pokemons')->with('pokemons', $pokemons);
     }
+
+    public function choosePokemon()
+    {
+        return view('user.choose');
+    }
+
+    public function savePokemon(Request $request, $id)
+    {
+        $pokemon = Pokemon::find($id);
+        $pokemon->user_id = Auth::user()->id;
+        $pokemon->save();
+        return redirect('/public');
+    }
+
+    public function myPokemons(Request $request)
+    {
+        $id = Auth::user()->id;
+        $pokemons = Pokemon::all()->where('user_id', $id);
+
+        return view('user.mypokemons')->with('pokemons', $pokemons);
+    }
+
+    public function abandon()
+    {
+        return view('user.abandon');
+    }
+
+    public function saveAbandon(Request $request, $id)
+    {
+        $pokemon = Pokemon::find($id);
+        $pokemon->user_id = null;
+        $pokemon->save();
+        return redirect('/public');
+    }
+
+
 
 
 }

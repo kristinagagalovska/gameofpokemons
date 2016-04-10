@@ -23,12 +23,20 @@ Route::get('/public', 'HomeController@index');
 Route::get('/user/edit/{id}', 'UserController@edit')->name('user.edit');
 Route::post('/user/edit/{id}', 'UserController@update')->name('user.edit');
 
-/*//user can choose pokemon
-Route::get('/user/pokemon/{id}', 'UserController@select')->name('user.pokemon');
-Route::post('/user/pokemon/{id}', 'UserController@save')->name('user.pokemon');*/
-
 //user can view all free pokemons
-Route::get('user/pokemons/{id}', 'UserController@freePokemons')->name('user.pokemons');
+Route::get('/user/pokemons/{id}', 'UserController@freePokemons')->name('user.pokemons');
+
+//user can choose pokemon
+Route::get('/user/choose/{id}', 'UserController@choosePokemon')->name('user.choose');
+Route::post('/user/choose/{id}', 'UserController@savePokemon')->name('user.choose');
+
+//user can view their pokemons
+Route::get('user/mypokemons/{id}', 'UserController@myPokemons')->name('user.mypokemons');
+
+//user can abandon pokemon
+Route::get('/user/abandon/{id}', 'UserController@abandon')->name('user.abandon');
+Route::post('/user/abandon/{id}', 'UserController@saveAbandon')->name('user.abandon');
+
 
 //admin panel
 Route::get('/admin', 'AdminController@admin')->name('admin');

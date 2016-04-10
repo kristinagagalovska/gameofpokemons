@@ -12,7 +12,11 @@
                 </div>
 
                 <div class="panel-body">
-                    <a href="{{route('user.pokemons', Auth::user()->id)}}">View Pokemons</a>
+                    <a href="{{route('user.pokemons', Auth::user()->id)}}">View Free Pokemons</a>
+                </div>
+
+                <div class="panel-body">
+                    <a href="{{route('user.mypokemons', Auth::user()->id)}}">My Pokemons</a>
                 </div>
 
                 <div class="panel-body">
